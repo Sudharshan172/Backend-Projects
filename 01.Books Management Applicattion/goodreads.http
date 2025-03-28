@@ -1,0 +1,86 @@
+//GET BOOKS API CALL
+GET http://localhost:3000/books/
+###
+
+//GET BOOK API CALL
+GET http://localhost:3000/books/35/
+###
+
+//ADD BOOK API CALL
+POST http://localhost:3000/books/
+Content-Type: application/json
+
+{
+    "title":"Wings of Fire",
+    "author_id":1,
+    "rating":4.48,
+    "rating_count":7464819,
+    "review_count":118312,
+    "description":"Autobiography of APJ Abdul Kalam",
+    "pages":309,
+    "date_of_publication":"November 1st 2003",
+    "edition_language":"Bengali",
+    "price":250,
+    "online_stores":"Amazon, Audible,Google play, Indigo,Abebooks"
+}
+###
+
+//UPDATE BOOK API CALL
+PUT http://localhost:3000/books/1/
+Content-Type: application/json
+
+{
+    "title":"Harry Potter and the Sorcerers Stone",
+    "author_id":2,
+    "rating":4.48,
+    "rating_count":7464819,
+    "review_count":118312,
+    "description":"Harry Potters life is miserable. His parents are dead and hes stuck with his heartless relatives.",
+    "pages":309,
+    "date_of_publication":"November 1st 2003",
+    "edition_language":"Bengali",
+    "price":10,
+    "online_stores":"Amazon, Audible,Google play, Indigo,Abebooks"
+}
+###
+
+//DELETE BOOK API CALL
+DELETE http://localhost:3000/books/1/
+###
+
+//GET Authors Books API CALL
+GET http://localhost:3000/authors/5/books
+###
+
+
+//Register User API CALL
+POST http://localhost:3000/users/
+Content-Type:application/json
+
+{
+    "username":"sudharshan123",
+    "name":"Sudharshan",
+    "password":"test@123",
+    "gender":"male",
+    "location":"kadapa"
+}
+###
+
+//Login User API CALL
+POST http://localhost:3000/login/
+Content-Type:application/json
+
+{
+    "username":"sudharshan123",
+    "password":"test@123"
+}
+###
+
+// User Profile after Authenticated
+GET http://localhost:3000/profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1ZGhhcnNoYW4xMjMiLCJpYXQiOjE3Mzg2MDIwODd9.ieX0KMbI5odXbeqwGs0VWxgDuW7z5r2PKfpEcKfAmIA
+
+// GET BOOKS for Authorized User only
+GET http://localhost:3000/books/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1ZGhhcnNoYW4xMjMiLCJpYXQiOjE3Mzg2MDIwODd9.ieX0KMbI5odXbeqwGs0VWxgDuW7z5r2PKfpEcKfAmIA
+

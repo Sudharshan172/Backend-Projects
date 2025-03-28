@@ -1,0 +1,40 @@
+### Get all States
+GET http://localhost:3000/states/
+
+### Get a Specific State by ID
+GET http://localhost:3000/states/3/
+
+### Add a District
+POST http://localhost:3000/districts/
+Content-Type: application/json
+
+{
+  "districtName": "New District",
+  "stateId": 2,
+  "cases": 1000,
+  "cured": 800,
+  "active": 150,
+  "deaths": 50
+}
+
+### Get a Specific District by ID
+GET http://localhost:3000/districts/5/
+
+### Delete a District by ID
+DELETE http://localhost:3000/districts/5/
+
+### Update a District by ID
+PUT http://localhost:3000/districts/5/
+Content-Type: application/json
+
+{
+  "districtName": "Updated District",
+  "stateId": 2,
+  "cases": 2000,
+  "cured": 1800,
+  "active": 100,
+  "deaths": 100
+}
+
+### Get State Statistics
+GET http://localhost:3000/states/3/stats/

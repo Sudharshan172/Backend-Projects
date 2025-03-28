@@ -1,0 +1,52 @@
+### API 1: Get all todos by status
+GET http://localhost:3000/todos/?status=TO%20DO
+
+### API 1: Get all todos by priority
+GET http://localhost:3000/todos/?priority=HIGH
+
+### API 1: Get all todos by priority and status
+GET http://localhost:3000/todos/?priority=HIGH&status=IN%20PROGRESS
+
+### API 1: Search todos containing "Play"
+GET http://localhost:3000/todos/?search_q=Play
+
+### API 2: Get specific todo by ID
+GET http://localhost:3000/todos/2/
+
+### API 3: Create a new todo
+POST http://localhost:3000/todos/
+Content-Type: application/json
+
+{
+  "id": 11,
+  "todo": "Complete Assignment",
+  "priority": "MEDIUM",
+  "status": "IN PROGRESS"
+}
+
+### API 4: Update status of a todo
+PUT http://localhost:3000/todos/10/
+Content-Type: application/json
+
+{
+  "status": "DONE"
+}
+
+### API 4: Update priority of a todo
+PUT http://localhost:3000/todos/10/
+Content-Type: application/json
+
+{
+  "priority": "HIGH"
+}
+
+### API 4: Update todo text
+PUT http://localhost:3000/todos/10/
+Content-Type: application/json
+
+{
+  "todo": "Some task"
+}
+
+### API 5: Delete a todo
+DELETE http://localhost:3000/todos/10/

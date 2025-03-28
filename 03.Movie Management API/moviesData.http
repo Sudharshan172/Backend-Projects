@@ -1,0 +1,46 @@
+### Get all movie names
+GET http://localhost:3000/movies/
+
+###
+
+### Add a new movie
+POST http://localhost:3000/movies/
+Content-Type: application/json
+
+{
+  "director_id": 6,
+  "movie_name": "Jurassic Park",
+  "lead_actor": "Jeff Goldblum"
+}
+
+###
+
+### Get a movie by ID
+GET http://localhost:3000/movies/112/
+
+###
+
+### Update movie details
+PUT http://localhost:3000/movies/12/
+Content-Type: application/json
+
+{
+  "director_id": 24,
+  "movie_name": "Thor",
+  "lead_actor": "Chris Hemsworth"
+}
+
+###
+
+### Delete a movie by ID
+DELETE http://localhost:3000/movies/12/
+
+###
+
+### Get all directors
+GET http://localhost:3000/directors/
+
+###
+
+### Get movies by a specific director
+GET http://localhost:3000/directors/1/movies/

@@ -1,0 +1,56 @@
+### Register a New User
+POST http://localhost:3000/register/
+Content-Type: application/json
+
+{
+  "username": "adam_richard",
+  "password": "richard_567",
+  "name": "Adam Richard",
+  "gender": "male"
+}
+
+### Login and Get JWT Token
+POST http://localhost:3000/login/
+Content-Type: application/json
+
+{
+  "username": "JoeBiden",
+  "password": "biden@123"
+}
+
+### Fetch Latest 4 Tweets of Followed Users (Requires JWT)
+GET http://localhost:3000/user/tweets/feed/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc0MzE1ODM5MX0.BsZNhWqh_yERP9bGESvS7NwuXd2SEb3swZ6q0SGegEk
+
+### Fetch Users Whom You Are Following (Requires JWT)
+GET http://localhost:3000/user/following/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc0MzE1ODM5MX0.BsZNhWqh_yERP9bGESvS7NwuXd2SEb3swZ6q0SGegEk
+
+### Fetch Users Who Follow You (Requires JWT)
+GET http://localhost:3000/user/followers/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc0MzE1ODM5MX0.BsZNhWqh_yERP9bGESvS7NwuXd2SEb3swZ6q0SGegEk
+
+### Fetch a Tweet by ID (Requires JWT)
+GET http://localhost:3000/tweets/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc0MzE1ODM5MX0.BsZNhWqh_yERP9bGESvS7NwuXd2SEb3swZ6q0SGegEk
+
+### Fetch Users Who Liked a Tweet (Requires JWT)
+GET http://localhost:3000/tweets/1/likes/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc0MzE1ODM5MX0.BsZNhWqh_yERP9bGESvS7NwuXd2SEb3swZ6q0SGegEk
+
+### Fetch Replies to a Tweet (Requires JWT)
+GET http://localhost:3000/tweets/1/replies/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc0MzE1ODM5MX0.BsZNhWqh_yERP9bGESvS7NwuXd2SEb3swZ6q0SGegEk
+
+### Post a New Tweet (Requires JWT)
+POST http://localhost:3000/user/tweets/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc0MzE1ODM5MX0.BsZNhWqh_yERP9bGESvS7NwuXd2SEb3swZ6q0SGegEk
+
+{
+  "tweet": "The Mornings..."
+}
+
+### Delete a Tweet (Requires JWT)
+DELETE http://localhost:3000/tweets/3/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc0MzE1ODM5MX0.BsZNhWqh_yERP9bGESvS7NwuXd2SEb3swZ6q0SGegEk
