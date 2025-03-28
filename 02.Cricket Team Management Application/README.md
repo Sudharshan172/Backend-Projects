@@ -1,6 +1,6 @@
 # Cricket Team Management Application
 
-Given two files `app.js` and a database file `cricketTeam.db` consisting a table `cricket_team`.
+Given two files `index.js` and a database file `cricketTeam.db` consisting a table `cricket_team`.
 
 Write APIs to perform operations on the table `cricket_team` containing the following columns,
 
@@ -23,7 +23,6 @@ Returns a list of all players in the team
 
 #### Response
 
-```
 [
   {
     playerId: 1,
@@ -34,7 +33,6 @@ Returns a list of all players in the team
 
   ...
 ]
-```
 
 ### API 2
 
@@ -48,19 +46,15 @@ Creates a new player in the team (database). `player_id` is auto-incremented
 
 #### Request
 
-```
 {
   "playerName": "Vishal",
   "jerseyNumber": 17,
   "role": "Bowler"
 }
-```
 
 #### Response
 
-```
 Player Added to Team
-```
 
 ### API 3
 
@@ -74,14 +68,12 @@ Returns a player based on a player ID
 
 #### Response
 
-```
 {
   playerId: 1,
   playerName: "Lakshman",
   jerseyNumber: 5,
   role: "All-rounder"
 }
-```
 
 ### API 4
 
@@ -95,20 +87,15 @@ Updates the details of a player in the team (database) based on the player ID
 
 #### Request
 
-```
 {
   "playerName": "Maneesh",
   "jerseyNumber": 54,
   "role": "All-rounder"
 }
-```
 
 #### Response
 
-```
 Player Details Updated
-
-```
 
 ### API 5
 
@@ -122,14 +109,7 @@ Deletes a player from the team (database) based on the player ID
 
 #### Response
 
-```
 Player Removed
-```
 
 <br/>
 
-Use `npm install` to install the packages.
-
-**Export the express instance using the default export syntax.**
-
-**Use Common JS module syntax.**
