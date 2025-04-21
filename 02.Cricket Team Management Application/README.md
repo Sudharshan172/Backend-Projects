@@ -1,6 +1,6 @@
 # Cricket Team Management Application
 
-Given two files `app.js` and a database file `cricketTeam.db` consisting a table `cricket_team`.
+Given two files `index.js` and a database file `cricketTeam.db` consisting a table `cricket_team`.
 
 Write APIs to perform operations on the table `cricket_team` containing the following columns,
 
