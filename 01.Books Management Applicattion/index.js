@@ -27,6 +27,45 @@ const initializeDBAndServer = async () => {
 };
 initializeDBAndServer();
 
+//Register User API Call
+app.post("/users/", async (request, response) => {
+  const { username, name, password, gender, location } = request.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const selectUserQuery = `select * from user where username = '${username}'`;
+  const dbUser = await db.get(selectUserQuery);
+  if (dbUser === undefined) {
+    const createUserQuery = `insert into user(username,name,password,gender,location)
+    values('${username}','${name}','${hashedPassword}','${gender}','${location}');`;
+    await db.run(createUserQuery);
+    response.send("User Created Successfully");
+  } else {
+    response.status(400);
+    response.send("User already exist");
+  }
+});
+
+//Login user API Call
+app.post("/login/", async (request, response) => {
+  const { username, password } = request.body;
+  const selectUserQuery = `select * from user where username = '${username}'`;
+  const dbUser = await db.get(selectUserQuery);
+  if (dbUser === undefined) {
+    response.status(400);
+    response.send("Invalid user");
+  } else {
+    const isPasswordMatched = await bcrypt.compare(password, dbUser.password);
+    if (isPasswordMatched === true) {
+      const payload = { username: username };
+      const jwtToken = jwt.sign(payload, "somerandomtoken");
+      response.send({ jwtToken });
+    } else {
+      response.status(400);
+      response.send("Invalid Password");
+    }
+  }
+});
+
+// Generate Authentication Token
 const authenticateToken = (request, response, next) => {
   let jwtToken;
   const authHeader = request.headers["authorization"];
@@ -159,41 +198,4 @@ app.get("/authors/:authorId/books/", authenticateToken, async (request, response
 );
 
 
-//Register User API Call
-app.post("/users/", async (request, response) => {
-  const { username, name, password, gender, location } = request.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
-  const selectUserQuery = `select * from user where username = '${username}'`;
-  const dbUser = await db.get(selectUserQuery);
-  if (dbUser === undefined) {
-    const createUserQuery = `insert into user(username,name,password,gender,location)
-    values('${username}','${name}','${hashedPassword}','${gender}','${location}');`;
-    await db.run(createUserQuery);
-    response.send("User Created Successfully");
-  } else {
-    response.status(400);
-    response.send("User already exist");
-  }
-});
 
-//Login user API Call
-app.post("/login/", async (request, response) => {
-  const { username, password } = request.body;
-  const selectUserQuery = `select * from user where username = '${username}'`;
-  const dbUser = await db.get(selectUserQuery);
-  if (dbUser === undefined) {
-    response.status(400);
-    response.send("Invalid user");
-  } else {
-    const isPasswordMatched = await bcrypt.compare(password, dbUser.password);
-    if (isPasswordMatched === true) {
-      response.send("Login Success");
-      const payload = { username: username };
-      const jwtToken = jwt.sign(payload, "somerandomtoken");
-      response.send({ jwtToken });
-    } else {
-      response.status(400);
-      response.send("Invalid Password");
-    }
-  }
-});
